@@ -21,32 +21,21 @@
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project Humfray</a>
+          <a class="navbar-brand" href="${pageContext.request.contextPath}/index">Project Humfray</a>
+          <p class="navbar-text">
+          	<a href="#" class="navbar-link">Links</a>
+          </p>
         </div>
-        <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
-        </div><!--/.navbar-collapse -->
       </div>
     </div>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+        <h1>Choisir son type de liste ?</h1>
+        <p>Grâce à cet outil, choisissez rapidement et facilement le type de liste le plus approprié à votre projet. Du <code>Vector</code> à la <code>WeakList</code> en passant par la <code>HashMap</code></p>
+        <p><a class="btn btn-primary btn-lg" role="button">En savoir plus &raquo;</a></p>
       </div>
     </div>
 
@@ -76,7 +65,6 @@
         <p>&copy; Humfray 2014</p>
       </footer>
     </div> <!-- /container -->
-"
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	</body>
