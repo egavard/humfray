@@ -11,8 +11,9 @@ public class IndexController extends HttpServlet {
 	public void service(HttpServletRequest req,HttpServletResponse res){
 		try {
 			req.getServletContext().getRequestDispatcher("/jsp/index.jsp").forward(req, res);
-		} catch (ServletException | IOException e) {
-			// TODO Auto-generated catch block
+		} catch (ServletException e){
+			e.printStackTrace();
+		}catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
