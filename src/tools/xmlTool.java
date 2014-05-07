@@ -1,5 +1,8 @@
 package tools;
 
+import java.util.List;
+
+import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
@@ -78,12 +81,42 @@ public class xmlTool {
 		   }
 	}
 	
-	
+	/**
+	 * parcoure le graphe, cherche la question et la reponse donnée et renvoie l'element de la question suivante
+	 * @param id de la reponse
+	 * @param reponse valeur choisie
+	 * @return Element contenant la réponse, null sinon 
+	 */
+	public Element getNextQuestion(int id,String reponse)
+	{
+		List<Element> actuel = root.getChildren();
+		for(Element e : actuel)
+		{
+			//on trouve la question correspondante
+			if(e.getAttribute(String.valueOf(id)).equals(id))
+			{
+				//on cherche l element correspondant a la reponse
+				for(Element tmp : e.getChildren())
+				{
+					if(tmp.getName().equals(reponse))
+					{
+						//on a trouvé la réponse 
+						return tmp;
+					}
+				}
+			}
+		}
+		return null;
+	}
+	/**
+	 * Simple test 
+	 */
+	/*
 	public static void main(String[] args) {
 		xmlTool t = new xmlTool();
 		t.initFile("./ressources/test.xml");
 		t.affiche(xmlTool.RawFormat);
 		System.out.println(t.getRootName());
-	}
+	}*/
 
 }
