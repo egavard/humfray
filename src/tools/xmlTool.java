@@ -105,12 +105,13 @@ public class xmlTool {
 	/**
 	 * Simple test 
 	 */
-	/*
+	
 	public static void main(String[] args) {
+		LOG.warn("warn");
 		xmlTool t = new xmlTool();
 		t.initFile("./ressources/test.xml");
 		t.affiche(xmlTool.RawFormat);
 		System.out.println(t.getRootName());
-	}*/
+	}
 
 }
