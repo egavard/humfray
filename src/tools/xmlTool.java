@@ -82,31 +82,25 @@ public class xmlTool {
 	}
 	
 	/**
-	 * parcoure le graphe, cherche la question et la reponse donnée et renvoie l'element de la question suivante
-	 * @param id de la reponse
-	 * @param reponse valeur choisie
-	 * @return Element contenant la réponse, null sinon 
+	 * 
+	 * @param e l'element de depart, root si null
+	 * @return list contenant les fils de e
 	 */
-	public Element getNextQuestion(int id,String reponse)
+	public List<Element> getNextListOfChlid(Element e)
 	{
-		List<Element> actuel = root.getChildren();
-		for(Element e : actuel)
+		List<Element> retour = null;		
+		try
 		{
-			//on trouve la question correspondante
-			if(e.getAttribute(String.valueOf(id)).equals(id))
-			{
-				//on cherche l element correspondant a la reponse
-				for(Element tmp : e.getChildren())
-				{
-					if(tmp.getName().equals(reponse))
-					{
-						//on a trouvé la réponse 
-						return tmp;
-					}
-				}
-			}
+			if(e == null)
+				retour = root.getChildren();
+			else
+				retour = e.getChildren();
 		}
-		return null;
+		catch(Exception exc)
+		{
+			LOG.debug("probleme avec l element de getnextlistofChlid : " + e.getName());
+		}
+		return  retour;
 	}
 	/**
 	 * Simple test 
