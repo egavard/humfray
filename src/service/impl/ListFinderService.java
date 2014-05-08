@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.jdom2.DataConversionException;
 import org.jdom2.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +14,7 @@ import dto.FinalListeDto;
 import dto.QuestionReponse;
 
 public class ListFinderService implements IListFinderService{
-	private static final String LINK = "./WebContent/ressources/ListV1.xml";
+	private static final String LINK = "../../ressources/ListV1.xml";
 	private XmlTool tool;
 	private static final Logger LOG = LoggerFactory.getLogger(ListFinderService.class);
 	public ListFinderService()

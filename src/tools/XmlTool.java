@@ -38,10 +38,10 @@ public class XmlTool {
 	public void initFile(String link)
 	{
 		try {
-			this.file = sxb.build(link);
+		    	this.file = sxb.build(XmlTool.class.getClassLoader().getResourceAsStream(link));
 			this.root = this.file.getRootElement();
 		} catch (Exception e) {
-			LOG.debug("fail to initialise the xml file with the given path",e);
+			LOG.error("fail to initialise the xml file with the given path",e);
 		}
 	}
 	
