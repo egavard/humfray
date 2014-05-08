@@ -27,7 +27,7 @@
 		</question>
 		<question id="3" q="Will it contain duplicate values?">
 			<reponse id="13" r="no" nextQ="8"/>
-			<reponse id="1" r="yes" nextQ="10"/>
+			<reponse id="30" r="yes" nextQ="10"/>
 		</question>
 		<question id="8" q="Is element order important?">
 			<reponse id="14" r="no" nextQ="none" listeid="7"/>
