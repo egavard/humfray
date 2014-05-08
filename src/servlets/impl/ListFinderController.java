@@ -1,20 +1,17 @@
 package servlets.impl;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import service.impl.ListFinderService;
+import service.interf.IListFinderService;
 import servlets.spec.Controller;
 
 public class ListFinderController extends HttpServlet implements Controller {
@@ -25,11 +22,8 @@ public class ListFinderController extends HttpServlet implements Controller {
 
 	public void service(HttpServletRequest req, HttpServletResponse res) {
 	    //TODO Récupérer grâce au listFinderService la toute première question de l'arbre.
-	    req.setAttribute("firstQuestionLabel", "Will it contain key/value pairs or values only?");
-	    Map<String, String> firstQuestionAnswers = new HashMap<String,String>();
-	    firstQuestionAnswers.put("yes", "Yes");
-	    firstQuestionAnswers.put("no", "No");
-	    req.setAttribute("firstQuestionAnswers", firstQuestionAnswers);
+	    IListFinderService listFinderService = new ListFinderService();
+	    req.setAttribute("firstQuestion", listFinderService.getFirstQuestion());
 		try {
 		    req.getServletContext().getRequestDispatcher("/jsp/listFinder.jsp").forward(req, res);
 		} catch (ServletException se) {

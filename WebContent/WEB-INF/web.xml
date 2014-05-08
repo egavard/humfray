@@ -9,9 +9,12 @@
 	This is a simple web application with a source code organization
 	based on the recommendations of the Application Developer's Guide.
     </description>
+
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+
+	<!-- Liste des Controller du projet -->
     <servlet>
         <servlet-name>IndexController</servlet-name>
         <servlet-class>servlets.impl.IndexController</servlet-class>
@@ -20,7 +23,7 @@
 		<servlet-name>ListFinderController</servlet-name>
 		<servlet-class>servlets.impl.ListFinderController</servlet-class>
     </servlet>
-
+	<!-- Mapping des Controller -->
     <servlet-mapping>
         <servlet-name>IndexController</servlet-name>
         <url-pattern>/index</url-pattern>
