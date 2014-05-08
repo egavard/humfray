@@ -4,7 +4,6 @@ import java.util.Map;
 /**
  * @version 0.1
  * @author boubou
- *
  */
 public class QuestionReponse {
 
