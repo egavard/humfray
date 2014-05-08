@@ -20,6 +20,7 @@ function creerHttpRequest(){
 
 
 function doAjaxRequestForNextQuestion(questionID,selectedElement){
+	$(selectedElement).parent().parent().nextAll().remove();
 	var objAjax = creerHttpRequest();
 	if(objAjax != null){
 		objAjax.open("GET",racine+"/traitementQuestion?idQuestion="+questionID+"&currentResponse="+$(selectedElement).find("option:selected").val()+"");
