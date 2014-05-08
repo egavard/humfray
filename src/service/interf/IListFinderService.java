@@ -1,7 +1,7 @@
 package service.interf;
 
 import dto.QuestionReponse;
-import dto.finalListeDto;
+import dto.FinalListeDto;
 
 /**
  * @version 0.1
@@ -31,5 +31,5 @@ public interface IListFinderService{
 	 * @param idReponse
 	 * @return finalListeDto
 	 */
-	public finalListeDto getFinalListe(Integer idQuestion,Integer idReponse);
+	public FinalListeDto getFinalListe(Integer idQuestion,Integer idReponse);
 }
