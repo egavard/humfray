@@ -13,7 +13,7 @@
 			<div id="alertXmlRequest" class="alert alert-danger" style="display:none;">Oops !<br/>Il est impossible d'exécuter les requêtes sur le serveur. Votre navigateur n'est pas compatible avec XMLHttpRequest ou l'activeX Microsoft</div>
 			<div id="alertFallenServer" class="alert alert-danger" style="display:none;">Oops !<br/>Il est impossible d'exécuter les requêtes sur le serveur. Le serveur est injoignable</div>
 			<form role="form">
-				<div class="form-group">
+				<div class="question">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							${firstQuestion.questionValue}
