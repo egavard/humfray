@@ -47,8 +47,7 @@ public class ListFinderService implements IListFinderService{
 		}
 		catch (Exception e)
 		{
-			LOG.debug("erreur lors de la récuperation de la premiere question");
-
+			LOG.error("erreur lors de la récuperation de la premiere question");
 		}
 		return null;
 
@@ -56,7 +55,39 @@ public class ListFinderService implements IListFinderService{
 
 	@Override
 	public QuestionReponse getNextQuestion(Integer idQuestion, Integer idReponse) {
-		// TODO Auto-generated method stub
+		try
+		{
+			Element e = tool.getChildren("arrayOfQuestions");
+			Element actu = null;
+			
+			
+			//retourne les questions
+			List<Element> array = tool.getListChildren(e,tool.getRoot());
+			
+			//recherche de l'id de la question
+			for(Element tmp : array)
+			{
+				if(tmp.getAttributeValue("id").equals(idQuestion))
+					actu = tmp;
+			}
+			
+			//retourne les reponses de la premiere question
+			List<Element> array2 = tool.getListChildren(array.get(0), e);
+
+			Map<String,String> mp = new HashMap<String,String>();
+			for(Element tmp : array2)
+			{
+				mp.put(tmp.getAttributeValue("id"), tmp.getAttributeValue("r"));
+			}
+
+			QuestionReponse retour = new QuestionReponse(array.get(0).getAttributeValue("q"),array.get(0).getAttribute("id").getIntValue(), mp);
+			return retour;
+		}
+		catch (Exception e)
+		{
+			LOG.error("erreur lors de la récuperation de la question");
+
+		}
 		return null;
 	}
 
