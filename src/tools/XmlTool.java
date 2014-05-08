@@ -45,6 +45,44 @@ public class XmlTool {
 		}
 	}
 	
+	public org.jdom2.Element getRoot() {
+		return root;
+	}
+	public void setRoot(org.jdom2.Element root) {
+		this.root = root;
+	}
+	/**
+	 * retourne les premiers fils
+	 * @return List<Element>
+	 */
+	public Element getChildren(String cname)
+	{
+		if(cname == null)
+			return null;
+		else
+			return root.getChild(cname);
+			
+	}
+	
+	public List<Element> getListChildren(Element e,Element actuel)
+	{
+		Element fin = actuel;
+		while(!fin.equals(e))
+		{
+			for(Element t : fin.getChildren())
+			{
+				if(t.equals(e))
+				{
+					return t.getChildren();
+				}
+				else
+				{
+					this.getListChildren(e,t);
+				}
+			}
+		}
+		return null;
+	}
 	/**
 	 * @return valeur de la racine
 	 */
@@ -101,16 +139,6 @@ public class XmlTool {
 			LOG.debug("probleme avec l element de getnextlistofChlid : " + e.getName(),exc);
 		}
 		return  retour;
-	}
-	/**
-	 * Simple test 
-	 */
-	
-	public static void main(String[] args) {
-		LOG.warn("warn");
-		XmlTool t = new XmlTool();
-		t.initFile("./WebContent/ressources/List.xml");
-		System.out.println(t.getRootName());
 	}
 
 }
