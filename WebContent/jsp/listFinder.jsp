@@ -24,7 +24,6 @@
 								<c:forEach items="${firstQuestion.listeReponse}" var="answer">
 									<option value="${answer.key}">${answer.value }</option>
 								</c:forEach>
-									<option value="test">test</option>
 							</select>
 						</div>
 					</div>

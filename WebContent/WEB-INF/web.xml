@@ -23,6 +23,10 @@
 		<servlet-name>ListFinderController</servlet-name>
 		<servlet-class>servlets.impl.ListFinderController</servlet-class>
     </servlet>
+    <servlet>
+    	<servlet-name>TraitementQuestionController</servlet-name>
+    	<servlet-class>servlets.impl.TraitementQuestionController</servlet-class>
+    </servlet>
 	<!-- Mapping des Controller -->
     <servlet-mapping>
         <servlet-name>IndexController</servlet-name>
@@ -32,6 +36,9 @@
         <servlet-name>ListFinderController</servlet-name>
         <url-pattern>/listFinder</url-pattern>
     </servlet-mapping>
-    
+    <servlet-mapping>
+    	<servlet-name>TraitementQuestionController</servlet-name>
+    	<url-pattern>/traitementQuestion</url-pattern>
+    </servlet-mapping>
 
 </web-app>
