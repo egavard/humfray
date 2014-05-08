@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.jdom2.DataConversionException;
 import org.jdom2.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,47 +54,62 @@ public class ListFinderService implements IListFinderService{
 	}
 
 	@Override
-	public QuestionReponse getNextQuestion(Integer idQuestion, Integer idReponse) {
+	public QuestionReponse getNextQuestion(Integer idQuestion, Integer idReponse) throws DataConversionException {
 		try
 		{
-			Element e = tool.getChildren("arrayOfQuestions");
-			Element actu = null;
-			Integer idNext = null;
-			
-			//retourne les questions
-			List<Element> array = tool.getListChildren(e,tool.getRoot());
-			
-			//recherche de l'id de la question
-			for(Element tmp : array)
+		Element e = tool.getChildren("arrayOfQuestions");
+		Element actuel = null;
+		Integer nextQuestion = null;
+		//retourne les questions
+		List<Element> array = tool.getListChildren(e,tool.getRoot());
+		
+		//recherche la question avec l'id
+		for(Element tmp : array)
+		{
+			if(tmp.getAttributeValue("id").equals(idQuestion + ""))
 			{
-				if(tmp.getAttributeValue("id").equals(idQuestion + ""))
-					actu = tmp;
+				actuel = tmp;
 			}
-			
-			//retourne les reponses de la question choisie
-			List<Element> array2 = tool.getListChildren(actu, e);
-			
-			//retourne l'id de la nouvelle question
-			for(Element tmp : array2)
+		}
+		
+		//retourne les reponses de la question
+		List<Element> array2 = tool.getListChildren(actuel, e);
+		
+		for(Element tmp : array2)
+		{
+			if(tmp.getAttributeValue("id").equals(idReponse + ""))
 			{
-				if(tmp.getAttributeValue("id").equals(idReponse + ""))
-				{
-					idNext = Integer.valueOf(tmp.getAttributeValue("nextQ"));
-				}
+				nextQuestion = Integer.valueOf(tmp.getAttributeValue("nextQ"));
 			}
-			
-			//recuperation des questions et recherche de la nouvelle
-			array = tool.getListChildren(e,tool.getRoot());
-			for(Element tmp : array)
+		}
+		
+		//retourne la nouvelle question
+		array = tool.getListChildren(e,tool.getRoot());
+		
+		//recherche la question avec l'id
+		for(Element tmp : array)
+		{
+			if(tmp.getAttributeValue("id").equals(nextQuestion + ""))
 			{
-				if(tmp.getAttributeValue("id").equals(idNext + ""))
-					
+				actuel = tmp;
 			}
+		}
+		
+		//on recupere les reponses
+		array2 = tool.getListChildren(actuel, e);
+
+		Map<String,String> mp = new HashMap<String,String>();
+		for(Element tmp : array2)
+		{
+			mp.put(tmp.getAttributeValue("id"), tmp.getAttributeValue("r"));
+		}
+		
+		QuestionReponse retour = new QuestionReponse(array.get(0).getAttributeValue("q"),actuel.getAttribute("id").getIntValue(), mp);
+		return retour;
 		}
 		catch (Exception e)
 		{
-			LOG.error("erreur lors de la recuperation de la question");
-
+			LOG.error("erreur lors de la recuperation de la question suivante");
 		}
 		return null;
 	}
