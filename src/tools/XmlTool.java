@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 public class XmlTool {
 	
 	/**
-	 * enumére les formats d'affichage
+	 * enumere les formats d'affichage
 	 */
 	public static final Format COMPACTFORMAT = Format.getCompactFormat();
 	public static final Format PRETTYFORMAT = Format.getPrettyFormat();
@@ -103,7 +103,7 @@ public class XmlTool {
 	
 	
 	/**
-	 * donne une représentation du xml
+	 * donne une representation du xml
 	 */
 	public void affiche(Format f)
 	{
@@ -136,7 +136,7 @@ public class XmlTool {
 		}
 		catch(Exception exc)
 		{
-			LOG.debug("probleme avec l element de getnextlistofChlid : " + e.getName(),exc);
+			LOG.error("probleme avec l element de getnextlistofChlid ",exc);
 		}
 		return  retour;
 	}

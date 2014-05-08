@@ -47,7 +47,7 @@ public class ListFinderService implements IListFinderService{
 		}
 		catch (Exception e)
 		{
-			LOG.error("erreur lors de la récuperation de la premiere question");
+			LOG.error("erreur lors de la recuperation de la premiere question");
 		}
 		return null;
 
@@ -67,7 +67,7 @@ public class ListFinderService implements IListFinderService{
 			//recherche de l'id de la question
 			for(Element tmp : array)
 			{
-				if(tmp.getAttributeValue("id").equals(idQuestion))
+				if(tmp.getAttributeValue("id").equals(idQuestion + ""))
 					actu = tmp;
 			}
 			
@@ -85,7 +85,7 @@ public class ListFinderService implements IListFinderService{
 		}
 		catch (Exception e)
 		{
-			LOG.error("erreur lors de la récuperation de la question");
+			LOG.error("erreur lors de la recuperation de la question");
 
 		}
 		return null;
