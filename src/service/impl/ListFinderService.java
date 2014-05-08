@@ -98,7 +98,7 @@ public class ListFinderService implements IListFinderService{
 			mp.put(tmp.getAttributeValue("id"), tmp.getAttributeValue("r"));
 		}
 		
-		QuestionReponse retour = new QuestionReponse(array.get(0).getAttributeValue("q"),actuel.getAttribute("id").getIntValue(), mp);
+		QuestionReponse retour = new QuestionReponse(actuel.getAttributeValue("q"),actuel.getAttribute("id").getIntValue(), mp);
 		return retour;
 		}
 		catch (Exception e)
