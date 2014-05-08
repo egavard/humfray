@@ -24,7 +24,7 @@ public class TraitementQuestionController extends HttpServlet implements Control
 
     public void service(HttpServletRequest request, HttpServletResponse response) {
 	String idQuestionStr = request.getParameter("idQuestion");
-	String reponseStr = request.getParameter("currentReponse");
+	String reponseStr = request.getParameter("currentResponse");
 	if(NumberUtils.isNumber(idQuestionStr) && NumberUtils.isNumber(reponseStr)){
 	    IListFinderService listFinderService = new ListFinderService();
 	    QuestionReponse nextQuestion = null;
