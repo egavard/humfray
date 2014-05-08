@@ -14,12 +14,21 @@
 	</welcome-file-list>
     <servlet>
         <servlet-name>IndexController</servlet-name>
-        <servlet-class>servlets.IndexController</servlet-class>
+        <servlet-class>servlets.impl.IndexController</servlet-class>
+    </servlet>
+    <servlet>
+		<servlet-name>ListFinderController</servlet-name>
+		<servlet-class>servlets.impl.ListFinderController</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>IndexController</servlet-name>
         <url-pattern>/index</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListFinderController</servlet-name>
+        <url-pattern>/listFinder</url-pattern>
+    </servlet-mapping>
+    
 
 </web-app>
