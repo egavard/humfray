@@ -58,7 +58,7 @@ public class ListFinderService implements IListFinderService{
 		{
 			Element e = tool.getChildren("arrayOfQuestions");
 			Element actu = null;
-			
+			Integer idNext = null;
 			
 			//retourne les questions
 			List<Element> array = tool.getListChildren(e,tool.getRoot());
@@ -70,17 +70,25 @@ public class ListFinderService implements IListFinderService{
 					actu = tmp;
 			}
 			
-			//retourne les reponses de la premiere question
-			List<Element> array2 = tool.getListChildren(array.get(0), e);
-
-			Map<String,String> mp = new HashMap<String,String>();
+			//retourne les reponses de la question choisie
+			List<Element> array2 = tool.getListChildren(actu, e);
+			
+			//retourne l'id de la nouvelle question
 			for(Element tmp : array2)
 			{
-				mp.put(tmp.getAttributeValue("id"), tmp.getAttributeValue("r"));
+				if(tmp.getAttributeValue("id").equals(idReponse + ""))
+				{
+					idNext = Integer.valueOf(tmp.getAttributeValue("nextQ"));
+				}
 			}
-
-			QuestionReponse retour = new QuestionReponse(array.get(0).getAttributeValue("q"),array.get(0).getAttribute("id").getIntValue(), mp);
-			return retour;
+			
+			//recuperation des questions et recherche de la nouvelle
+			array = tool.getListChildren(e,tool.getRoot());
+			for(Element tmp : array)
+			{
+				if(tmp.getAttributeValue("id").equals(idNext + ""))
+					
+			}
 		}
 		catch (Exception e)
 		{
