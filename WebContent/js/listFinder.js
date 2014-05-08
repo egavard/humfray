@@ -28,7 +28,7 @@ function doAjaxRequestForNextQuestion(questionID,selectedElement){
 			if(objAjax.readyState == 4 && objAjax.status==200){
 				//Traitement effectué.
 				$("#alertFallenServer").hide();
-				$(".question").last().append(objAjax.reponseText);
+				$(".question").last().append(objAjax.responseText);
 			}else{
 				$("#alertFallenServer").show();
 			}
