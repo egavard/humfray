@@ -34,7 +34,7 @@ public class ListFinderService implements IListFinderService{
 			List<Element> array = tool.getListChildren(e,tool.getRoot());
 
 			//retourne les reponses de la premiere question
-			List<Element> array2 = tool.getListChildren(array.get(0), e);
+			List<Element> array2 = array.get(0).getChildren();
 
 			Map<String,String> mp = new HashMap<String,String>();
 			for(Element tmp : array2)
@@ -71,9 +71,8 @@ public class ListFinderService implements IListFinderService{
 				actuel = tmp;
 			}
 		}
-		
 		//retourne les reponses de la question
-		List<Element> array2 = tool.getListChildren(actuel, e);
+		List<Element> array2 = actuel.getChildren();
 		
 		for(Element tmp : array2)
 		{
@@ -82,10 +81,7 @@ public class ListFinderService implements IListFinderService{
 				nextQuestion = Integer.valueOf(tmp.getAttributeValue("nextQ"));
 			}
 		}
-		
-		//retourne la nouvelle question
-		array = tool.getListChildren(e,tool.getRoot());
-		
+
 		//recherche la question avec l'id
 		for(Element tmp : array)
 		{
@@ -94,10 +90,8 @@ public class ListFinderService implements IListFinderService{
 				actuel = tmp;
 			}
 		}
-		
 		//on recupere les reponses
-		array2 = tool.getListChildren(actuel, e);
-
+		array2 = actuel.getChildren();
 		Map<String,String> mp = new HashMap<String,String>();
 		for(Element tmp : array2)
 		{
@@ -120,9 +114,10 @@ public class ListFinderService implements IListFinderService{
 		return null;
 	}
 	/*
-	public static void main(String[] args) {
+	public static void main(String[] args) throws DataConversionException {
 		ListFinderService t = new ListFinderService();
 		System.out.println(t.getFirstQuestion().getListeReponse());
+		System.out.println(t.getNextQuestion(1,1).getListeReponse());
 	}*/
 
 }
