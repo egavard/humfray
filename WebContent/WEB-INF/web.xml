@@ -27,6 +27,11 @@
     	<servlet-name>TraitementQuestionController</servlet-name>
     	<servlet-class>servlets.impl.TraitementQuestionController</servlet-class>
     </servlet>
+    <servlet>
+    	<servlet-name>H2Console</servlet-name>
+    	<servlet-class>org.h2.server.web.WebServlet</servlet-class>
+    	<load-on-startup>1</load-on-startup>
+	</servlet>
 	<!-- Mapping des Controller -->
     <servlet-mapping>
         <servlet-name>IndexController</servlet-name>
@@ -40,5 +45,8 @@
     	<servlet-name>TraitementQuestionController</servlet-name>
     	<url-pattern>/traitementQuestion</url-pattern>
     </servlet-mapping>
-
+	<servlet-mapping>
+	    <servlet-name>H2Console</servlet-name>
+	    <url-pattern>/console/*</url-pattern>
+	</servlet-mapping>
 </web-app>
