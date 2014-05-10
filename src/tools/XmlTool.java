@@ -1,5 +1,6 @@
 package tools;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -39,6 +40,7 @@ public class XmlTool {
 	{
 		try {
 		    this.file = sxb.build(XmlTool.class.getClassLoader().getResourceAsStream(link));
+			//this.file = sxb.build(new File(link));
 			this.root = this.file.getRootElement();
 		} catch (Exception e) {
 			LOG.error("fail to initialise the xml file with the given path",e);
