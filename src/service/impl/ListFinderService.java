@@ -16,6 +16,7 @@ import dto.QuestionReponse;
 
 public class ListFinderService implements IListFinderService{
 	private static final String LINK = "../../ressources/ListV1.xml";
+	//private static final String LINK = "./WebContent/ressources/ListV1.xml";
 	private XmlTool tool;
 	private static final Logger LOG = LoggerFactory.getLogger(ListFinderService.class);
 	public ListFinderService()
@@ -78,6 +79,8 @@ public class ListFinderService implements IListFinderService{
 		{
 			if(tmp.getAttributeValue("id").equals(idReponse + ""))
 			{
+				if(tmp.getAttributeValue("nextQ").equals("none"))
+					return null;
 				nextQuestion = Integer.valueOf(tmp.getAttributeValue("nextQ"));
 			}
 		}
@@ -108,16 +111,63 @@ public class ListFinderService implements IListFinderService{
 		return null;
 	}
 
-	@Override
+
 	public FinalListeDto getFinalListe(Integer idQuestion, Integer idReponse) {
-		// TODO Auto-generated method stub
-		return null;
+		try
+		{
+		Element e = tool.getChildren("arrayOfQuestions");
+		Element actuel = null;
+		Integer idListe = null;
+		FinalListeDto result = null;
+		//retourne les questions
+		List<Element> array = tool.getListChildren(e,tool.getRoot());
+		
+		//recherche la question avec l'id
+		for(Element tmp : array)
+		{
+			if(tmp.getAttributeValue("id").equals(idQuestion + ""))
+			{
+				actuel = tmp;
+			}
+		}
+		//retourne les reponses de la question
+		List<Element> array2 = actuel.getChildren();
+		
+		for(Element tmp : array2)
+		{
+			if(tmp.getAttributeValue("id").equals(idReponse + ""))
+			{
+				//si on est pas a la fin de l'arbre
+				if(!tmp.getAttributeValue("nextQ").equals("none"))
+					return null;
+				else
+					idListe = Integer.valueOf(tmp.getAttributeValue("listeid"));
+			}
+		}
+
+		//recuperation de la liste des listes et recherche de l'id
+		e = tool.getRoot().getChild("arrayOfList");
+		array.clear();
+		array = e.getChildren();
+		for(Element tmp : array)
+		{
+			if(Integer.valueOf(tmp.getAttributeValue("id")) == idListe)
+				result = new FinalListeDto(tmp.getAttributeValue("value"));
+		}
+		
+		return result;
+		}
+		catch(Exception e)
+		{
+			LOG.error("recuperation de la liste equivalente a la question donnee, impossible");
+			return null;
+		}
 	}
+	
 	/*
 	public static void main(String[] args) throws DataConversionException {
 		ListFinderService t = new ListFinderService();
-		System.out.println(t.getFirstQuestion().getListeReponse());
-		System.out.println(t.getNextQuestion(1,1).getListeReponse());
+		System.out.println(t.getFinalListe(4, 5).getName());
 	}*/
 
 }
