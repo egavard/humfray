@@ -17,15 +17,15 @@
 	<!-- Liste des Controller du projet -->
     <servlet>
         <servlet-name>IndexController</servlet-name>
-        <servlet-class>servlets.impl.IndexController</servlet-class>
+        <servlet-class>servlets.IndexController</servlet-class>
     </servlet>
     <servlet>
 		<servlet-name>ListFinderController</servlet-name>
-		<servlet-class>servlets.impl.ListFinderController</servlet-class>
+		<servlet-class>servlets.ListFinderController</servlet-class>
     </servlet>
     <servlet>
     	<servlet-name>HandleQuestionController</servlet-name>
-    	<servlet-class>servlets.impl.HandleQuestionController</servlet-class>
+    	<servlet-class>servlets.HandleQuestionController</servlet-class>
     </servlet>
 	<!-- Mapping des Controller -->
     <servlet-mapping>

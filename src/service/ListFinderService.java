@@ -1,4 +1,4 @@
-package service.impl;
+package service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,7 +9,7 @@ import org.jdom2.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import dto.FinalListeDto;
+import dto.FinalListDto;
 import dto.QuestionAnswer;
 import tools.XmlTool;
 
@@ -108,13 +108,13 @@ public class ListFinderService {
 	}
 
 
-	public FinalListeDto getFinalListe(Integer idQuestion, Integer idReponse) {
+	public FinalListDto getFinalListe(Integer idQuestion, Integer idReponse) {
 		try
 		{
 		Element e = tool.getChildren("questionArray");
 		Element actuel = null;
 		Integer idListe = null;
-		FinalListeDto result = null;
+		FinalListDto result = null;
 		//retourne les questions
 		List<Element> array = tool.getListChildren(e,tool.getRoot());
 		
@@ -148,7 +148,7 @@ public class ListFinderService {
 		for(Element tmp : array)
 		{
 			if(Integer.valueOf(tmp.getAttributeValue("id")) == idListe)
-				result = new FinalListeDto(tmp.getAttributeValue("value"));
+				result = new FinalListDto(tmp.getAttributeValue("value"));
 		}
 		
 		return result;

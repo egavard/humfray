@@ -5,9 +5,9 @@ package dto;
  * @author boubou
  *
  */
-public class FinalListeDto {
+public class FinalListDto {
 	private String name;
-	public FinalListeDto(String name)
+	public FinalListDto(String name)
 	{
 		this.name = name;
 	}

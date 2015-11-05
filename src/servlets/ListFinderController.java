@@ -1,4 +1,4 @@
-package servlets.impl;
+package servlets;
 
 import java.io.IOException;
 
@@ -10,10 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import service.impl.ListFinderService;
-import servlets.spec.Controller;
+import service.ListFinderService;
 
-public class ListFinderController extends HttpServlet implements Controller {
+public class ListFinderController extends HttpServlet {
 
 	private static final long serialVersionUID = -7209361548340612113L;
 	private static final Logger LOG = LoggerFactory.getLogger(ListFinderController.class);
