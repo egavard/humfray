@@ -1,4 +1,4 @@
-function creerHttpRequest(){
+function getXHRRequest(){
     if (window.XMLHttpRequest){
         return new XMLHttpRequest();
     }
@@ -14,20 +14,20 @@ function creerHttpRequest(){
             catch(e){}
         }
     }
-    return null; // non support�
+    return null; // unsupported
 }
 
 
 
 function doAjaxRequestForNextQuestion(questionID,selectedElement){
 	$(selectedElement).parent().parent().nextAll().remove();
-	var objAjax = creerHttpRequest();
+	var objAjax = getXHRRequest();
 	if(objAjax != null){
 		objAjax.open("GET",racine+"/handleQuestion?idQuestion="+questionID+"&currentAnswer="+$(selectedElement).find("option:selected").val()+"");
 		objAjax.send();
 		objAjax.onreadystatechange=function(){
 			if(objAjax.readyState == 4 && objAjax.status==200){
-				//Traitement effectu�.
+				//We got an answer from server.
 				$("#alertFallenServer").hide();
 				$(".question").last().append(objAjax.responseText);
 			}else{
