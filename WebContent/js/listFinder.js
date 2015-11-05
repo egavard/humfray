@@ -14,7 +14,7 @@ function creerHttpRequest(){
             catch(e){}
         }
     }
-    return null; // non supporté
+    return null; // non supportï¿½
 }
 
 
@@ -23,11 +23,11 @@ function doAjaxRequestForNextQuestion(questionID,selectedElement){
 	$(selectedElement).parent().parent().nextAll().remove();
 	var objAjax = creerHttpRequest();
 	if(objAjax != null){
-		objAjax.open("GET",racine+"/traitementQuestion?idQuestion="+questionID+"&currentResponse="+$(selectedElement).find("option:selected").val()+"");
+		objAjax.open("GET",racine+"/handleQuestion?idQuestion="+questionID+"&currentAnswer="+$(selectedElement).find("option:selected").val()+"");
 		objAjax.send();
 		objAjax.onreadystatechange=function(){
 			if(objAjax.readyState == 4 && objAjax.status==200){
-				//Traitement effectué.
+				//Traitement effectuï¿½.
 				$("#alertFallenServer").hide();
 				$(".question").last().append(objAjax.responseText);
 			}else{

@@ -9,14 +9,12 @@ import org.jdom2.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import service.interf.IListFinderService;
-import tools.XmlTool;
 import dto.FinalListeDto;
-import dto.QuestionReponse;
+import dto.QuestionAnswer;
+import tools.XmlTool;
 
-public class ListFinderService implements IListFinderService{
+public class ListFinderService {
 	private static final String LINK = "../../ressources/ListV1.xml";
-	//private static final String LINK = "./WebContent/ressources/ListV1.xml";
 	private XmlTool tool;
 	private static final Logger LOG = LoggerFactory.getLogger(ListFinderService.class);
 	public ListFinderService()
@@ -25,11 +23,10 @@ public class ListFinderService implements IListFinderService{
 		tool.initFile(LINK);
 	}
 
-	@Override
-	public QuestionReponse getFirstQuestion() {
+	public QuestionAnswer getFirstQuestion() {
 		try
 		{
-			Element e = tool.getChildren("arrayOfQuestions");
+			Element e = tool.getChildren("questionArray");
 
 			//retourne les questions
 			List<Element> array = tool.getListChildren(e,tool.getRoot());
@@ -43,22 +40,21 @@ public class ListFinderService implements IListFinderService{
 				mp.put(tmp.getAttributeValue("id"), tmp.getAttributeValue("r"));
 			}
 
-			QuestionReponse retour = new QuestionReponse(array.get(0).getAttributeValue("q"),array.get(0).getAttribute("id").getIntValue(), mp);
+			QuestionAnswer retour = new QuestionAnswer(array.get(0).getAttributeValue("q"),array.get(0).getAttribute("id").getIntValue(), mp);
 			return retour;
 		}
 		catch (Exception e)
 		{
-			LOG.error("erreur lors de la recuperation de la premiere question");
+			LOG.error("Unable to find questionArray node");
 		}
 		return null;
 
 	}
 
-	@Override
-	public QuestionReponse getNextQuestion(Integer idQuestion, Integer idReponse) throws DataConversionException {
+	public QuestionAnswer getNextQuestion(Integer idQuestion, Integer idReponse) throws DataConversionException {
 		try
 		{
-		Element e = tool.getChildren("arrayOfQuestions");
+		Element e = tool.getChildren("questionArray");
 		Element actuel = null;
 		Integer nextQuestion = null;
 		//retourne les questions
@@ -101,7 +97,7 @@ public class ListFinderService implements IListFinderService{
 			mp.put(tmp.getAttributeValue("id"), tmp.getAttributeValue("r"));
 		}
 		
-		QuestionReponse retour = new QuestionReponse(actuel.getAttributeValue("q"),actuel.getAttribute("id").getIntValue(), mp);
+		QuestionAnswer retour = new QuestionAnswer(actuel.getAttributeValue("q"),actuel.getAttribute("id").getIntValue(), mp);
 		return retour;
 		}
 		catch (Exception e)
@@ -115,7 +111,7 @@ public class ListFinderService implements IListFinderService{
 	public FinalListeDto getFinalListe(Integer idQuestion, Integer idReponse) {
 		try
 		{
-		Element e = tool.getChildren("arrayOfQuestions");
+		Element e = tool.getChildren("questionArray");
 		Element actuel = null;
 		Integer idListe = null;
 		FinalListeDto result = null;
@@ -141,12 +137,12 @@ public class ListFinderService implements IListFinderService{
 				if(!tmp.getAttributeValue("nextQ").equals("none"))
 					return null;
 				else
-					idListe = Integer.valueOf(tmp.getAttributeValue("listeid"));
+					idListe = Integer.valueOf(tmp.getAttributeValue("listId"));
 			}
 		}
 
 		//recuperation de la liste des listes et recherche de l'id
-		e = tool.getRoot().getChild("arrayOfList");
+		e = tool.getRoot().getChild("listArray");
 		array.clear();
 		array = e.getChildren();
 		for(Element tmp : array)
@@ -159,7 +155,7 @@ public class ListFinderService implements IListFinderService{
 		}
 		catch(Exception e)
 		{
-			LOG.error("recuperation de la liste equivalente a la question donnee, impossible");
+			LOG.error("Unable to retrieve final response");
 			return null;
 		}
 	}

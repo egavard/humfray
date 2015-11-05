@@ -1,81 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <start>
-	<arrayOfQuestions>
+	<questionArray>
 		<question id="1" q="Will it contain key/value pairs or values only?">
-			<reponse id="1" r="pairs" nextQ="2"/>
-			<reponse id="2" r="values only" nextQ="3"/>
+			<answer id="1" r="pairs" nextQ="2"/>
+			<answer id="2" r="values only" nextQ="3"/>
+			<answer id="30" r="maybe" nextQ="5"/>
 		</question>
 		<question id="2" q="Is element order important?">
-			<reponse id="3" r="no" nextQ="4"/>
-			<reponse id="4" r="yes" nextQ="5"/>
+			<answer id="3" r="no" nextQ="4"/>
+			<answer id="4" r="yes" nextQ="5"/>
 		</question>
 		<question id="4" q="Should it be used as cache or store construction expensive objects?">
-			<reponse id="5" r="yes" nextQ="none" listeid="1"/>
-			<reponse id="6" r="no" nextQ="6"/>
+			<answer id="5" r="yes" nextQ="none" listId="1"/>
+			<answer id="6" r="no" nextQ="6"/>
 		</question>
 		<question id="6" q="Unique key to be determined using equals instead of ==?">
-			<reponse id="7" r="yes" nextQ="none" listeid="2"/>
-			<reponse id="8" r="no" nextQ="none" listeid="3"/>
+			<answer id="7" r="yes" nextQ="none" listId="2"/>
+			<answer id="8" r="no" nextQ="none" listId="3"/>
 		</question>
 		<question id="5" q="Insertion order or sorted by keys?">
-			<reponse id="9" r="insertion ordered" nextQ="none" listeid="4"/>
-			<reponse id="10" r="key sorted" nextQ="7"/>
+			<answer id="9" r="insertion ordered" nextQ="none" listId="4"/>
+			<answer id="10" r="key sorted" nextQ="7"/>
 		</question>
 		<question id="7" q="should it be synchronized?">
-			<reponse id="11" r="no" nextQ="none" listeid="5"/>
-			<reponse id="12" r="yes" nextQ="none" listeid="6"/>
+			<answer id="11" r="no" nextQ="none" listId="5"/>
+			<answer id="12" r="yes" nextQ="none" listId="6"/>
 		</question>
 		<question id="3" q="Will it contain duplicate values?">
-			<reponse id="13" r="no" nextQ="8"/>
-			<reponse id="30" r="yes" nextQ="10"/>
+			<answer id="13" r="no" nextQ="8"/>
+			<answer id="30" r="yes" nextQ="10"/>
 		</question>
 		<question id="8" q="Is element order important?">
-			<reponse id="14" r="no" nextQ="none" listeid="7"/>
-			<reponse id="15" r="yes" nextQ="9"/>
+			<answer id="14" r="no" nextQ="none" listId="7"/>
+			<answer id="15" r="yes" nextQ="9"/>
 		</question>
 		<question id="9" q="Insertion order or sorted by values?">
-			<reponse id="16" r="insertion ordered" nextQ="none" listeid="8"/>
-			<reponse id="17" r="value sorted" nextQ="none" listeid="9"/>
+			<answer id="16" r="insertion ordered" nextQ="none" listId="8"/>
+			<answer id="17" r="value sorted" nextQ="none" listId="9"/>
 		</question>
 		<question id="10" q="Sould it be synchronized?">
-			<reponse id="18" r="yes" nextQ="11"/>
-			<reponse id="19" r="no" nextQ="12"/>
+			<answer id="18" r="yes" nextQ="11"/>
+			<answer id="19" r="no" nextQ="12"/>
 		</question>
 		<question id="11" q="Should it act like LIFO stack?">
-			<reponse id="20" r="yes" nextQ="none" listeid="10"/>
-			<reponse id="21" r="no" nextQ="none" listeid="11"/>
+			<answer id="20" r="yes" nextQ="none" listId="10"/>
+			<answer id="21" r="no" nextQ="none" listId="11"/>
 		</question>
 		<question id="12" q="Fast random access required?">
-			<reponse id="22" r="yes" nextQ="none" listeid="12"/>
-			<reponse id="23" r="no" nextQ="13"/>
+			<answer id="22" r="yes" nextQ="none" listId="12"/>
+			<answer id="23" r="no" nextQ="13"/>
 		</question>
 		<question id="13" q="Fast sequential access,addition/deletion required?">
-			<reponse id="24" r="no" nextQ="14"/>
-			<reponse id="25" r="yes" nextQ="none" listeid="13"/>
+			<answer id="24" r="no" nextQ="14"/>
+			<answer id="25" r="yes" nextQ="none" listId="13"/>
 		</question>
 		<question id="14" q="Should it be used as a queue or double-ended queue?">
-			<reponse id="26" r="no" nextQ="none" listeid="12"/>
-			<reponse id="27" r="yes" nextQ="15"/>
+			<answer id="26" r="no" nextQ="none" listId="12"/>
+			<answer id="27" r="yes" nextQ="15"/>
 		</question>
 		<question id="15" nextQ="Does it have to be fast performing queue?">
-			<reponse id="28" r="yes" nextQ="none" listeid="14"/>
-			<reponse id="29" r="no" nextQ="none" listeid="13"/>
+			<answer id="28" r="yes" nextQ="none" listId="14"/>
+			<answer id="29" r="no" nextQ="none" listId="13"/>
 		</question>
-	</arrayOfQuestions>
-	<arrayOfList>
-		<liste id="1" value="WeakHashMap"/>
-		<liste id="2" value="HashMap"/>
-		<liste id="3" value="IdentityHashMap"/>
-		<liste id="4" value="LinkedHashMap"/>
-		<liste id="5" value="TreeMap"/>
-		<liste id="6" value="HashTable"/>
-		<liste id="7" value="HashSet"/>
-		<liste id="8" value="LinkedHashSet"/>
-		<liste id="9" value="TreeSet"/>
-		<liste id="10" value="Stack"/>
-		<liste id="11" value="Vector"/>
-		<liste id="12" value="ArrayList"/>
-		<liste id="13" value="LinkedList"/>
-		<liste id="14" value="ArrayDeque"/>
-	</arrayOfList>
+	</questionArray>
+	<listArray>
+		<list id="1" value="WeakHashMap"/>
+		<list id="2" value="HashMap"/>
+		<list id="3" value="IdentityHashMap"/>
+		<list id="4" value="LinkedHashMap"/>
+		<list id="5" value="TreeMap"/>
+		<list id="6" value="HashTable"/>
+		<list id="7" value="HashSet"/>
+		<list id="8" value="LinkedHashSet"/>
+		<list id="9" value="TreeSet"/>
+		<list id="10" value="Stack"/>
+		<list id="11" value="Vector"/>
+		<list id="12" value="ArrayList"/>
+		<list id="13" value="LinkedList"/>
+		<list id="14" value="ArrayDeque"/>
+	</listArray>
 </start>

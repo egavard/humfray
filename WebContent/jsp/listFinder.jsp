@@ -21,7 +21,7 @@
 						<div class="panel-body">
 							<select class="form-control" name="firstQuestion" id="firstQuestion" onchange="javascript:doAjaxRequestForNextQuestion('${firstQuestion.id}',this)">
 								<option></option>
-								<c:forEach items="${firstQuestion.listeReponse}" var="answer">
+								<c:forEach items="${firstQuestion.answerList}" var="answer">
 									<option value="${answer.key}">${answer.value }</option>
 								</c:forEach>
 							</select>

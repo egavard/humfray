@@ -11,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import service.impl.ListFinderService;
-import service.interf.IListFinderService;
 import servlets.spec.Controller;
 
 public class ListFinderController extends HttpServlet implements Controller {
@@ -22,7 +21,7 @@ public class ListFinderController extends HttpServlet implements Controller {
 
 	public void service(HttpServletRequest req, HttpServletResponse res) {
 	    //TODO Récupérer grâce au listFinderService la toute première question de l'arbre.
-	    IListFinderService listFinderService = new ListFinderService();
+	    ListFinderService listFinderService = new ListFinderService();
 	    req.setAttribute("firstQuestion", listFinderService.getFirstQuestion());
 		try {
 		    req.getServletContext().getRequestDispatcher("/jsp/listFinder.jsp").forward(req, res);
