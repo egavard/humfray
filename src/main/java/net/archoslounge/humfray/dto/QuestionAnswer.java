@@ -1,6 +1,7 @@
-package dto;
+package net.archoslounge.humfray.dto;
 
 import java.util.Map;
+
 /**
  * @version 0.1
  * @author boubou
@@ -9,12 +10,11 @@ public class QuestionAnswer {
 
 	private String questionValue;
 	private Integer id;
-	private Map<String,String> answerList;
-	
-	public QuestionAnswer(String questionValue,Integer id,Map<String,String> answerList)
-	{
+	private Map<String, String> answerList;
+
+	public QuestionAnswer(String questionValue, Integer id, Map<String, String> answerList) {
 		this.questionValue = questionValue;
-		this.id =id;
+		this.id = id;
 		this.answerList = answerList;
 	}
 

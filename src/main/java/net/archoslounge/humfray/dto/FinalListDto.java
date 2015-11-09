@@ -1,4 +1,4 @@
-package dto;
+package net.archoslounge.humfray.dto;
 
 /**
  * @version 0.1
@@ -7,15 +7,17 @@ package dto;
  */
 public class FinalListDto {
 	private String name;
-	public FinalListDto(String name)
-	{
+
+	public FinalListDto(String name) {
 		this.name = name;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 }

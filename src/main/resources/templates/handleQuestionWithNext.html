@@ -1,0 +1,15 @@
+<div class="question">
+	<div class="panel panel-primary">
+		<div class="panel-heading" th:text="${nextQuestion.questionValue}">${nextQuestion.questionValue}</div>
+		<div class="panel-body">
+			<select class="form-control" name="nextQuestion"
+				id="nextQuestion${nextQuestion.id}"
+				onchange="javascript:doAjaxRequestForNextQuestion('${nextQuestion.id}',this)"
+				th:attr="onchange=|javascript:doAjaxRequestForNextQuestion('${nextQuestion.id}',this)|,id=|nextQuestion${nextQuestion.id}|">
+				<option></option>
+				<option th:text="${answer.value}" th:attr="value=${answer.key}"
+					value="${answer.key}" th:each="answer : ${nextQuestion.answerList}">${answer.value}</option>
+			</select>
+		</div>
+	</div>
+</div>
