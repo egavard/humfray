@@ -23,6 +23,7 @@ public class ListFinderService {
 	}
 
 	public QuestionAnswer getFirstQuestion() throws DataConversionException {
+		tool.initFile(LINK);
 		Element e = tool.getChildren("questionArray");
 
 		// retourne les questions
@@ -43,6 +44,7 @@ public class ListFinderService {
 	}
 
 	public QuestionAnswer getNextQuestion(Integer idQuestion, Integer idReponse) throws DataConversionException {
+		tool.initFile(LINK);
 		Element e = tool.getChildren("questionArray");
 		Element actuel = null;
 		Integer nextQuestion = null;
@@ -85,6 +87,7 @@ public class ListFinderService {
 	}
 
 	public FinalListDto getFinalListe(Integer idQuestion, Integer idReponse) {
+		tool.initFile(LINK);
 		Element e = tool.getChildren("questionArray");
 		Element actuel = null;
 		Integer idListe = null;
