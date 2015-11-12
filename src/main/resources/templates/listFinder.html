@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Humfray!</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"
+	media="screen" />
+<style>
+body {
+	padding-top: 50px;
+	padding-bottom: 20px;
+}
+</style>
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+				</button>
+				<a class="navbar-brand" th:href="@{/}">Project Humfray</a>
+				<p class="navbar-text">
+					<a th:href="@{/listFinder}" class="navbar-link">List Finder</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>List Finder</h2>
+				<p>
+					Besoin d'aide pour choisir efficacement une structure de données ?<br />
+					Suivez notre formulaire ci-dessous pour obtenir la structure la
+					plus optimisée pour votre utilisation<br />
+				</p>
+				<div id="alertXmlRequest" class="alert alert-danger"
+					style="display: none;">
+					Oops !<br />Il est impossible d'exécuter les requêtes sur le
+					serveur. Votre navigateur n'est pas compatible avec XMLHttpRequest
+					ou l'activeX Microsoft
+				</div>
+				<div id="alertFallenServer" class="alert alert-danger"
+					style="display: none;">
+					Oops !<br />Il est impossible d'exécuter les requêtes sur le
+					serveur. Le serveur est injoignable
+				</div>
+				<form role="form">
+					<div class="question">
+						<div class="panel panel-primary">
+							<div class="panel-heading"
+								th:text="${firstQuestion.questionValue}">${firstQuestion.questionValue}</div>
+							<div class="panel-body">
+								<select class="form-control" name="firstQuestion"
+									id="firstQuestion"
+									onchange="javascript:doAjaxRequestForNextQuestion('${firstQuestion.id}',this)"
+									th:attr="onchange=|javascript:doAjaxRequestForNextQuestion('${firstQuestion.id}',this)|">
+									<option></option>
+									<option th:text="${answer.value}" th:attr="value=${answer.key}"
+										value="${answer.key}"
+										th:each="answer : ${firstQuestion.answerList}">${answer.value}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<hr />
+		<footer>
+			<p>&copy; Humfray 2014</p>
+		</footer>
+	</div>
+
+	<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/listFinder.js}"></script>
+</body>
+</html>

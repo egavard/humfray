@@ -23,7 +23,7 @@ function doAjaxRequestForNextQuestion(questionID,selectedElement){
 	$(selectedElement).parent().parent().nextAll().remove();
 	var objAjax = getXHRRequest();
 	if(objAjax != null){
-		objAjax.open("GET",racine+"/handleQuestion?idQuestion="+questionID+"&currentAnswer="+$(selectedElement).find("option:selected").val()+"");
+		objAjax.open("GET","/handleQuestion?idQuestion="+questionID+"&currentAnswer="+$(selectedElement).find("option:selected").val()+"");
 		objAjax.send();
 		objAjax.onreadystatechange=function(){
 			if(objAjax.readyState == 4 && objAjax.status==200){
