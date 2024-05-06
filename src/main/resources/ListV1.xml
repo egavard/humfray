@@ -58,7 +58,7 @@
 			<answer id="26" r="no" nextQ="none" listId="12"/>
 			<answer id="27" r="yes" nextQ="15"/>
 		</question>
-		<question id="15" nextQ="Does it have to be fast performing queue?">
+		<question id="15" q="Does it have to be fast performing queue?">
 			<answer id="28" r="yes" nextQ="none" listId="14"/>
 			<answer id="29" r="no" nextQ="none" listId="13"/>
 		</question>
